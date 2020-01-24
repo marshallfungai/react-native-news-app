@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Alert, ActivityIndicator, View, ListView,  FlatList } from 'react-native';
-import { Container, Header, Content, List, ListItem, Thumbnail, Text, Left, Body, Right, Button } from 'native-base';
+import { Dimensions, Alert, ActivityIndicator, View, ListView,  FlatList, Image } from 'react-native';
+import { Container, Header, Content, List, ListItem, Thumbnail, Text, Left, Body, Right, Button} from 'native-base';
 
 import { getNews } from '../services/newsData';
 import NewsItem from './NewsItem';
@@ -30,12 +30,15 @@ export default class NewsList extends Component {
    });
   }
 
-handleModalClose = () => {
-  this.setState({
-        setModalVisibility: false,
-        modalNewsData: {}
-    })
-  }
+  /***
+   
+  */
+  handleModalClose = () => {
+    this.setState({
+          setModalVisibility: false,
+          modalNewsData: {}
+      })
+    }
 
   
   componentDidMount () {
@@ -58,7 +61,8 @@ handleModalClose = () => {
 
   render() {
 
-    const placeholder = this.state.placeholder_url;
+    //const placeholder = this.state.data[0].urlToImage != null ? this.state.newsItem.urlToImage : 'https://via.placeholder.com/250';
+    const {width, height} = Dimensions.get('window');
 
     let loadView = this.state.isLoading ? (
       <View>
@@ -75,7 +79,20 @@ handleModalClose = () => {
 
 
     return (
-        <>
+        <>  
+          
+              <View  style={{width: '100%', height: height / 4}}>
+               <Image
+                    style={{width: 50, height: 50}}
+                    source={{uri:'https://loremflickr.com/320/140/turkey,cyprus/all'}} 
+                    style={{width: '100%', height: height / 6}}
+                  />
+                <View style={{padding:5, marginBottom: 2}}>
+                  <Text note style={{fontSize:20, fontWeight:'700' }}>Top Stories from Turkey</Text>
+                  <Text note style={{fontSize: 12, marginBottom:10}}>5 Hours ago</Text>
+                 </View> 
+
+              </View>   
              <FlatList
                 data={this.state.data}
                 renderItem={({ item }) => <this.Item item={item} />}

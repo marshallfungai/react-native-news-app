@@ -6,7 +6,6 @@ export default class NewsItem extends Component {
 
     constructor(props) {
         super(props);
-       // this.newsItem = props.newsData;
         this.state = {
             newsItem: props.newsData
         }
@@ -36,7 +35,7 @@ export default class NewsItem extends Component {
 
                     <Text note numberOfLines={3}>{this.state.newsItem.description} . .</Text>
                     <View style={{ marginTop: 5, borderTopColor: '#ccc' }}>
-                        <Time time={this.state.newsItem.publishedAt} />
+                        <Time time={this.state.newsItem.publishedAt} /> 
                     </View>
                    
                 </Body>

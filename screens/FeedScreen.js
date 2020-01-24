@@ -21,17 +21,17 @@ export default class FeedScreen extends Component {
             <Tab heading="TopStories" tabStyle={{backgroundColor:'#3a5475'}} activeTabStyle={{backgroundColor:'#cc232a'}}>
                  <NewsList category ='top-headlines' navigation={this.props.navigation}/>
             </Tab>
-            <Tab heading="Economy" tabStyle={{backgroundColor:'#3a5475'}} activeTabStyle={{backgroundColor:'#cc232a'}}>              
-                <NewsList category ='economy' navigation={this.props.navigation}/>
+            <Tab heading="Technology" tabStyle={{backgroundColor:'#3a5475'}} activeTabStyle={{backgroundColor:'#cc232a'}}>              
+                <NewsList category ='Technology' navigation={this.props.navigation}/>
             </Tab>
             <Tab heading="Sports" tabStyle={{backgroundColor:'#3a5475'}} activeTabStyle={{backgroundColor:'#cc232a'}}>
-                <NewsList category ='sports' navigation={this.props.navigation}/>
+                <NewsList category ='Sports' navigation={this.props.navigation}/>
             </Tab>
-            <Tab heading="International" tabStyle={{backgroundColor:'#3a5475'}} activeTabStyle={{backgroundColor:'#cc232a'}}>
-                 <NewsList category ='international' navigation={this.props.navigation}/>
+            <Tab heading="Entertainment" tabStyle={{backgroundColor:'#3a5475'}} activeTabStyle={{backgroundColor:'#cc232a'}}>
+                 <NewsList category ='Entertainment' navigation={this.props.navigation}/>
             </Tab>
-            <Tab heading="Magazine" tabStyle={{backgroundColor:'#3a5475'}} activeTabStyle={{backgroundColor:'#cc232a'}}>
-                <NewsList category ='magazine' navigation={this.props.navigation}/>
+            <Tab heading="health" tabStyle={{backgroundColor:'#3a5475'}} activeTabStyle={{backgroundColor:'#cc232a'}}>
+                <NewsList category ='Health' navigation={this.props.navigation}/>
             </Tab>
             </Tabs>
       

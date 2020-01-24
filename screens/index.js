@@ -25,16 +25,18 @@ import { Slider } from "react-native";
 // });
 
 
-
+/**
+ * Drawer navigator 
+ */
 const MyDrawerNavigator = createDrawerNavigator({
   Feed: {
-    screen: FeedScreen,
+    screen: FeedScreen, //Main news screen
   },
   Favorites: {
-    screen: Favorites,
+    screen: Favorites, //Favorites screen
   },
   Settings: {
-    screen: Settings,
+    screen: Settings, // Settings screen
   }
 },{
   contentComponent: SideMenu,
