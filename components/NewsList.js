@@ -1,0 +1,97 @@
+import React, { Component } from 'react';
+import { Alert, ActivityIndicator, View, ListView,  FlatList } from 'react-native';
+import { Container, Header, Content, List, ListItem, Thumbnail, Text, Left, Body, Right, Button } from 'native-base';
+
+import { getNews } from '../services/newsData';
+import NewsItem from './NewsItem';
+import ModalComponent from './Modal';
+
+import { ScrollView } from 'react-native-gesture-handler';
+import { ThemeColors } from 'react-navigation';
+
+
+export default class NewsList extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoadiing: true,
+      data: null,
+      placeholder_url: 'https://via.placeholder.com/150',
+      setModalVisibility: false,
+      modalNewsData: {}
+    }; 
+  }
+  
+  handleItemDataOnPress = (newsData)=>{
+    this.setState({
+      setModalVisibility: true,
+      modalNewsData: newsData
+   });
+  }
+
+handleModalClose = () => {
+  this.setState({
+        setModalVisibility: false,
+        modalNewsData: {}
+    })
+  }
+
+  
+  componentDidMount () {
+     const {category} = this.props;
+     console.log(category);
+     getNews(category).then(data => {
+ 
+      this.setState({
+        data: data,
+        isLoadiing: false
+      });
+
+      console.log(this.state.data);
+
+    }, error => {
+      Alert.alert('Error', 'something went wrong');
+    });
+
+  }
+
+  render() {
+
+    const placeholder = this.state.placeholder_url;
+
+    let loadView = this.state.isLoading ? (
+      <View>
+        <ActivityIndicator animating={this.state.isLoadiing} />
+        <Text style={{ marginTop: 10 }}>Please wait ...</Text>
+      </View>
+    ) : (
+        <FlatList
+          data={this.state.data}
+          renderItem={({ item }) => <this.Item item={item} />}
+          keyExtractor={item => item.id} />
+      )
+
+
+
+    return (
+        <>
+             <FlatList
+                data={this.state.data}
+                renderItem={({ item }) => <this.Item item={item} />}
+                keyExtractor={(item, index) => index.toString()} />
+                <ModalComponent 
+                showModal={this.state.setModalVisibility}
+                newsData={this.state.modalNewsData}
+                onClose ={this.handleModalClose}
+             />
+        </>
+    );
+  }
+
+  Item = ({ item }) =>{
+    return (
+      <NewsItem key={item.id} onPressData={this.handleItemDataOnPress} newsData={item} />
+    );
+  }
+}
