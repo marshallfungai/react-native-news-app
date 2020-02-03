@@ -14,7 +14,7 @@ export default class Time extends Component {
         const time = moment(this.date || moment.now()).fromNow();
         return (
 
-            <Text note>{time}</Text>
+            <Text style={{color:'#cc232a'}} note> {time}</Text>
         );
     }
 }

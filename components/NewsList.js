@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Dimensions, Alert, ActivityIndicator, View, ListView,  FlatList, Image } from 'react-native';
 import { Container, Header, Content, List, ListItem, Thumbnail, Text, Left, Body, Right, Button} from 'native-base';
+import styled from 'styled-components/native';
 
 import { getNews } from '../services/newsData';
 import NewsItem from './NewsItem';
 import ModalComponent from './Modal';
+import SkeletonLoader from './SkeletonLoader';
 
 import { ScrollView } from 'react-native-gesture-handler';
 import { ThemeColors } from 'react-navigation';
@@ -40,24 +42,20 @@ export default class NewsList extends Component {
       })
     }
 
+    
   
   componentDidMount () {
-     const {category} = this.props;
-     console.log(category);
-     getNews(category).then(data => {
- 
+     const {articles} = this.props;
+     
+     if(articles) {
       this.setState({
-        data: data,
+        data: articles,
         isLoadiing: false
       });
-
-      console.log(this.state.data);
-
-    }, error => {
-      Alert.alert('Error', 'something went wrong');
-    });
-
+     }
+    
   }
+  
 
   render() {
 
@@ -65,15 +63,12 @@ export default class NewsList extends Component {
     const {width, height} = Dimensions.get('window');
 
     let loadView = this.state.isLoading ? (
-      <View>
-        <ActivityIndicator animating={this.state.isLoadiing} />
-        <Text style={{ marginTop: 10 }}>Please wait ...</Text>
-      </View>
+      <SkeletonLoader/>
     ) : (
-        <FlatList
-          data={this.state.data}
-          renderItem={({ item }) => <this.Item item={item} />}
-          keyExtractor={item => item.id} />
+      <CustomFlatList
+      data={this.state.data}
+      renderItem={({ item }) => <this.Item item={item} />}
+      keyExtractor={(item, index) => index.toString()} />
       )
 
 
@@ -81,11 +76,11 @@ export default class NewsList extends Component {
     return (
         <>  
           
-              <View  style={{width: '100%', height: height / 4}}>
+              <View  style={{width: '100%', height: height / 3, borderBottom: '1px solid #ccc', elevation: 3}}>
                <Image
                     style={{width: 50, height: 50}}
                     source={{uri:'https://loremflickr.com/320/140/turkey,cyprus/all'}} 
-                    style={{width: '100%', height: height / 6}}
+                    style={{width: '100%', height: height / 4}}
                   />
                 <View style={{padding:5, marginBottom: 2}}>
                   <Text note style={{fontSize:20, fontWeight:'700' }}>Top Stories from Turkey</Text>
@@ -93,10 +88,7 @@ export default class NewsList extends Component {
                  </View> 
 
               </View>   
-             <FlatList
-                data={this.state.data}
-                renderItem={({ item }) => <this.Item item={item} />}
-                keyExtractor={(item, index) => index.toString()} />
+             {loadView}
                 <ModalComponent 
                 showModal={this.state.setModalVisibility}
                 newsData={this.state.modalNewsData}
@@ -108,7 +100,11 @@ export default class NewsList extends Component {
 
   Item = ({ item }) =>{
     return (
-      <NewsItem key={item.id} onPressData={this.handleItemDataOnPress} newsData={item} />
+      <NewsItem key={item.id} onPressData={this.handleItemDataOnPress} newsData={item} category={this.props.category}/>
     );
   }
 }
+
+const CustomFlatList= styled(FlatList) `
+     background-color: #eeeeee; 
+`;

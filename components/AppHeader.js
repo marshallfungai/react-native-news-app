@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Image } from 'react-native';
-import  PropTypes from 'prop-types';
+import  propTypes from 'prop-types';
 import { Container, Header, Left, Body, Right, Button, Icon, Title} from 'native-base';
 
 export default class AppHeader extends Component {
@@ -52,7 +52,7 @@ export default class AppHeader extends Component {
 }
 
 AppHeader.PropTypes = {
-  hastabs: PropTypes.bool,
+  hastabs: propTypes.bool,
 };
 
 AppHeader.defaultProps = {

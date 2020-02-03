@@ -6,8 +6,8 @@ export default class Favorites extends Component {
     return (
       <Container>
         <AppHeader isHome={true} navigation={this.props.navigation}/>
-        <Content>
-          <Card>
+        <Content style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap', flexGrow: 0}}>
+          <Card style={{flexBasis: '50%', backgroundColor: 'powderblue'}} >
               <CardItem>
                 <Body>
                   <Text>
@@ -17,7 +17,7 @@ export default class Favorites extends Component {
               </CardItem>
            
             </Card>
-            <Card>
+            <Card style={{flexBasis: '50%',  backgroundColor: 'skyblue'}}>
               <CardItem>
                 <Body>
                   <Text>
@@ -27,7 +27,7 @@ export default class Favorites extends Component {
               </CardItem>
            
             </Card>
-            <Card>
+            <Card style={{flexBasis: '50%',  backgroundColor: 'steelblue'}}>
               <CardItem>
                 <Body>
                   <Text>
@@ -37,7 +37,7 @@ export default class Favorites extends Component {
               </CardItem>
            
             </Card>
-            <Card>
+            <Card style={{flexBasis: '50%',  backgroundColor: 'blue'}}>
               <CardItem>
                 <Body>
                   <Text>
@@ -47,7 +47,17 @@ export default class Favorites extends Component {
               </CardItem>
            
             </Card>
-            <Card>
+            <Card style={{flexBasis: '50%',  backgroundColor: 'powderblue'}}>
+              <CardItem>
+                <Body>
+                  <Text>
+                    //Your text here
+                  </Text>
+                </Body>
+              </CardItem>
+           
+            </Card>
+            <Card style={{flexBasis: '50%',  backgroundColor: 'steelblue'}}>
               <CardItem>
                 <Body>
                   <Text>

@@ -2,6 +2,7 @@
 import FeedScreen from "./FeedScreen";
 import Settings from "./Settings";
 import Favorites from "./Favorites";
+import AboutUs from "./AboutUs";
 import SideMenu from "../navigation/SideMenu";
 import { createAppContainer } from 'react-navigation';
 // import { createStackNavigator } from 'react-navigation-stack';  
@@ -34,6 +35,9 @@ const MyDrawerNavigator = createDrawerNavigator({
   },
   Favorites: {
     screen: Favorites, //Favorites screen
+  },
+  AboutUs: {
+    screen: AboutUs, //Favorites screen
   },
   Settings: {
     screen: Settings, // Settings screen

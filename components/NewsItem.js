@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, Thumbnail, List, ListItem, Text, Left, Body, Right, Button, View } from 'native-base';
 import Time from './Time';
+import styled from 'styled-components/native';
 
 export default class NewsItem extends Component {
 
@@ -26,23 +27,33 @@ export default class NewsItem extends Component {
         return (
 
 
-            <ListItem avatar onPress={this.handleDisplayNews}>
+            <CustomListItem avatar onPress={this.handleDisplayNews} noBorder={true} >
                 <Left>
                     <Thumbnail square source={{ uri: this.state.newsItem.urlToImage != null ? this.state.newsItem.urlToImage : placeholder_url }} />
                 </Left>
                 <Body>
-                    <Text numberOfLines={2}>{this.state.newsItem.title}</Text>
+                    <Text style={{color:'#3a5475', fontSize: 17}} numberOfLines={2}>{this.state.newsItem.title}</Text>
 
-                    <Text note numberOfLines={3}>{this.state.newsItem.description} . .</Text>
-                    <View style={{ marginTop: 5, borderTopColor: '#ccc' }}>
+                    {/* <Text note numberOfLines={3}>{this.state.newsItem.description} . .</Text> */}
+                    <View style={{ marginTop: 5, borderTopColor: '#ccc', display: 'flex', flexDirection: 'row' }}>
+                         <Text style={{backgroundColor:'#cc232a', color:'#fff', padding: 5, paddingBottom: 2, paddingTop: 2, marginRight: 5, fontSize: 11}}>{this.props.category}</Text> 
+                        <Text style={{ color:'#ccc'}}> || </Text> 
                         <Time time={this.state.newsItem.publishedAt} /> 
-                    </View>
+                     </View>
                    
                 </Body>
                 
-            </ListItem>
+            </CustomListItem>
 
 
         );
     }
 }
+
+const CustomListItem = styled(ListItem) `
+     background-color: #fff;
+     margin: 5px;
+     padding: 5px;
+    elevation: 3;
+`;
+

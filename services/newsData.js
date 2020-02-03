@@ -1,6 +1,11 @@
 import {newsAPI, api_url, country_target, api_key} from '../config/restAPIConfig';
 
-export async function getNews(cat) {
+/**
+ * @Desc => get single category news
+ * @param {*} cat 
+ * @returns [{}] news
+ */
+ async function getNews(cat) {
 
 
     const news_cat = cat ==='top-headlines'?'':cat;  /// catergories
@@ -15,4 +20,38 @@ export async function getNews(cat) {
     }catch(error) {
         throw error;
     }
+}
+
+/**
+ * @Desc => get multiple category news
+ * @param {*} => categories 
+ * @returns { [], [], [] ... }  news
+ */
+function getAllNews(categories) {
+
+ 
+   
+    try {
+
+           const newsFeeds =  categories.map((cat)=> { 
+                cat = cat =='top-headlines'? '': cat;
+                               
+                let fetch_API = newsAPI +'&category='+ cat;
+                console.log(fetch_API);
+                return fetch(fetch_API).then(value => value.json())
+            });
+     
+        return Promise.all(newsFeeds).then(data => data).catch(err=> err);    
+        
+    }
+    catch(error) {
+        console.log(error);
+        throw (error);
+
+    }
+}
+
+export {
+    getNews,        //single category news
+    getAllNews      //mulitple category news
 }
