@@ -16,12 +16,11 @@ export default class AppHeader extends Component {
   render() {
 
     let {title, isHome, isModal, hastabs} = this.props;
-     console.log('has tabs:: ' + hastabs);
-
+    
     return (
 
         <Header hasTabs={hastabs}  style={{backgroundColor:'#3a5475'}}>
-          <Left>
+           <Left>
             {
               isHome?
               <Button transparent onPress= {this.props.navigation.openDrawer}>
@@ -40,10 +39,10 @@ export default class AppHeader extends Component {
           </Left>
           
           <Body  >
-             {/* <Image style={{width: 400, height: 300}} source={{ uri: 'https://www.kibrisnehaber.com/wp-content/uploads/2017/03/site-logo.png' }} /> */}
-             <Image  style={{marginTop:10}}  source={require('../assets/img/haberci-logo.png')} />
-             <Title>News App</Title>
+              <Image  style={{marginTop:10}}  source={require('../assets/img/haberci-logo.png')} />
+
           </Body>
+          <Right></Right>
        
         </Header>
   

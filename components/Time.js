@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Header, Content, Thumbnail, List, ListItem, Text, Left, Body, Right, Button, View } from 'native-base';
+import { Container, Header, Content, Thumbnail, List, ListItem, Text, Left, Body, Right, Button, View, Icon } from 'native-base';
 import moment from 'moment';
 
 export default class Time extends Component {

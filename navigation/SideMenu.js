@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, ScrollView, Text, View, Image, Dimensions } from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
-import { DrawerItems,DrawerActions } from 'react-navigation-drawer';
+import { DrawerItems, DrawerActions } from 'react-navigation-drawer';
 import { Icon } from 'native-base';
 
 

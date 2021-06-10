@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Dimensions, Alert, ActivityIndicator, View, ListView,  FlatList, Image } from 'react-native';
-import { Container, Header, Content, List, ListItem, Thumbnail, Text, Left, Body, Right, Button} from 'native-base';
+import { Container, Header, Content, List, ListItem, Thumbnail, Text, Left, Body, Right, Button, Icon} from 'native-base';
 import styled from 'styled-components/native';
 
 import { getNews } from '../services/newsData';
@@ -85,6 +85,7 @@ export default class NewsList extends Component {
                 <View style={{padding:5, marginBottom: 2}}>
                   <Text note style={{fontSize:20, fontWeight:'700' }}>Top Stories from Turkey</Text>
                   <Text note style={{fontSize: 12, marginBottom:10}}>5 Hours ago</Text>
+                
                  </View> 
 
               </View>   

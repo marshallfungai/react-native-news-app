@@ -1,18 +1,25 @@
 import React, { Component } from 'react';
-import { Dimensions, Modal, Share, Image, StyleSheet } from 'react-native';
+import { Dimensions, Modal, Share, Image, StyleSheet} from 'react-native';
 import { AppHeader } from './AppHeader';
 import Time from './Time';
-import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left,Right, Body, Title, View } from 'native-base';
+import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left,Right, Body, Title, View} from 'native-base';
+import Toast from 'react-native-simple-toast';
 
 
 
 export default class ModalComponent extends Component {
     constructor(props) {
         super(props);
-        this.handleModalClose = this.handleModalClose.bind(this)
+        this.handleModalClose = this.handleModalClose.bind(this);
+       
     }
     handleModalClose() {
         return this.props.onClose();
+    }
+
+    addToFavorites() {
+        console.log('Trying to add to favorites');
+        Toast.show('Added to favorites...', Toast.LONG);
     }
 
   
@@ -67,9 +74,14 @@ export default class ModalComponent extends Component {
                             <CardItem>
                                 <Left>
                                     <Button transparent textStyle={{ color: '#87838B' }}>
-                                        <Icon name="logo-github" />
+                                      
                                         <Time time={publishedAt} />
+                                        
                                     </Button>
+                                    <View style={{ display:'flex', flexDirection:'row', alignItems:'center'}} >
+                                            <Icon style={{color:'#3a5475', marginRight: 5}} name='ios-heart'  onPress={this.addToFavorites}/> 
+                                            <Text style={{fontSize: 10 }}>Add To Favorites</Text>
+                                </View>
                                 </Left>
                             </CardItem>
                         </Card>

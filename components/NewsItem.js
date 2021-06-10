@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Container, Header, Content, Thumbnail, List, ListItem, Text, Left, Body, Right, Button, View } from 'native-base';
+import { Container, Header, Content, Thumbnail, List, ListItem, Text, Left, Body, Right, Button, View, Icon } from 'native-base';
 import Time from './Time';
 import styled from 'styled-components/native';
+
 
 export default class NewsItem extends Component {
 
@@ -39,6 +40,7 @@ export default class NewsItem extends Component {
                          <Text style={{backgroundColor:'#cc232a', color:'#fff', padding: 5, paddingBottom: 2, paddingTop: 2, marginRight: 5, fontSize: 11}}>{this.props.category}</Text> 
                         <Text style={{ color:'#ccc'}}> || </Text> 
                         <Time time={this.state.newsItem.publishedAt} /> 
+                        
                      </View>
                    
                 </Body>
