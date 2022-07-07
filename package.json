@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.6",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "native-base": "^2.13.8",
     "newsapi": "^2.4.0",
     "prop-types": "^15.7.2",
